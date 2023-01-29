@@ -43,6 +43,26 @@ int main(){
     cout<<n<<endl;
     n.insert(2,"lol");//insert substring at an index
     cout<<n<<endl;
+    
+    for(int i=0; i<n.size(); i++){
+        cout<<n[i]<<endl;
+    }
+    //str.size() or str.length() gives the size/length of the string
 
+    cout<<n.substr(6,4)<<endl; //where to start from, how many letters
+    
+    //string to integer - stoi
+    string s7= "786";
+    int x= stoi(s7);
+    cout<<x+2<<endl;
+    //integer to string
+    string s8= to_string(x);
+    cout<<s8+"2"<<endl;
+    
+    //sort string
+    string s9="ncduhfunakikxkx";
+    sort(s9.begin(), s1.end());
+    cout<<s9<<endl;
+    
     return 0;
 }
