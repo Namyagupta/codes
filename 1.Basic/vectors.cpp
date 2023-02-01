@@ -25,12 +25,15 @@ int main(){
         cout<<element<<endl;
     }
     
+    //delete the element
     v.pop_back();
-
+    
+    //create a second vector
     vector<int> v2(3,50); //no. of elements, value of the element 
-
+    
+    //swapping the vectors
     swap(v,v2);
-
+ 
     for(auto ele: v){
         cout<<ele<<endl;
     }
@@ -38,5 +41,9 @@ int main(){
     for(auto ele: v2){
         cout<<ele<<endl;
     }
+    
+    //sorting the vectors
+    sort(v.begin(), v.end());
+    
     return 0;
 }
