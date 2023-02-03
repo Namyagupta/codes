@@ -9,20 +9,30 @@ class student{
     int age;
     bool gender;
 
-    //default 
+    //default - shallow copy: data members point to some dyanamically allocated memory, the loactions in default does not get copied
     student(){
-        cout<<"Default constructor";
+        cout<<"Default constructor"<<endl;
     }
 
     //parameterized constructor
     student(string s, int a, bool g){
+        cout<<"Parametrised constructor"<<endl;
         name=s;
         age=a;
         gender=g;
     }
 
-    // //copy constructor
-    // student()
+    // //copy constructor - deep copy: data members point to some dyanamically allocated memory, the loactions also get copied
+    student(student &a){
+        cout<<"Copy Constructor"<<endl;
+        name = a.name;
+        age = a.age;
+        gender = a.gender;
+    }
+
+    ~student(){
+        cout<<"Destructor called"<<endl;
+    }
 
     void printInfo(){
         cout<<"Name: ";
@@ -31,6 +41,13 @@ class student{
         cout<<age<<endl;
         cout<<"Gender: ";
         cout<<gender<<endl;
+    }
+
+    bool operator == (student &a){
+        if(name == a.name && age==a.age && gender==a.gender){
+            return true;
+        }
+        return false;
     }
 };
 int main(){
@@ -43,10 +60,20 @@ int main(){
     //instead of declaring the objects of the class again and again, we can create an array of objects
     //array of objects
     student a("Namya", 21, 1);
-    a.printInfo();
+    //a.printInfo();
 
     student b;
+    
+    student c=a;
+    // or student c=a;
 
+    //operator overloading
+    if(c==a){
+        cout<<"Same"<<endl;
+    }
+    else{
+        cout<<"Not same"<<endl;
+    }
 
     return 0;
 }
