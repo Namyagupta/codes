@@ -9,7 +9,7 @@ using namespace std;
 class fun{
     public:
     void func(){
-        cout<<"Hey";
+        cout<<"Hey"<<endl;
     }
     void func(int a){
         cout<<"One parameter"<<a<<endl;
@@ -42,17 +42,47 @@ class complex{
     }
 };
 
+//RUNTIME POLYMORPHISM - virtual function
+class base{
+    public:
+    virtual void print(){
+        cout<<"This is base class print function"<<endl;
+    }
+    void display(){
+        cout<<"This is base class display function"<<endl;
+    }
+};
+
+class derived : public base{
+    public:
+    void print(){
+        cout<<"This is derived class print function"<<endl;
+    }
+    void display(){
+        cout<<"This is derived class display function"<<endl;
+    }
+};
+
 int main(){
     //Function Overloading
-    // fun a;
-    // a.func();
-    // a.func(3,4);
-    // a.func(2);
+    fun a;
+    a.func();
+    a.func(3,4);
+    a.func(2);
     
     //Operator Overloading
     complex c1(4,3);
     complex c2(2,5);
     complex c3 = c1+c2;
     c3.display();
+
+    //Runtime - virtual function
+    base *baseptr;
+    derived d;
+    baseptr = &d;
+
+    baseptr -> print();
+    baseptr -> display();
+
     return 0;
 }
