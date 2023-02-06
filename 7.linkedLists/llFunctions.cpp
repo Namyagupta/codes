@@ -25,10 +25,10 @@ void insertAtTail(node* &head, int val){
     node* n = new node(val);
 
     if(head==NULL){
-        // head=n;
-        // return;
-        insertAtHead(head,val);
+        head=n;
         return;
+        // insertAtHead(head,val);
+        // return;
     }
 
     node* temp = head;
@@ -63,7 +63,6 @@ void display(node* head){
 //bool search - whether element there or not
 bool search(node* head, int val){
     node* temp = head;
-    int ctr=0;
     while(temp!=NULL){
         if(temp->data == val) {
             return true;
@@ -73,8 +72,29 @@ bool search(node* head, int val){
     return false;
 }
 
+//Delete At Head
+void deleteAtHead(node* &head){
+    node* toDel = head;
+    head = head->next;
+    delete toDel;
+}
+
 //deletion
 void deletion(node* head, int val){
+
+    //corner case 1: deletion of first element
+    
+    //corner case 2: No element
+    if(head == NULL){
+        return;
+    }
+    
+    //corner case 3: only 1 element present
+    if(head->next == NULL){
+        deleteAtHead(head);
+        return;
+    }
+
     node* temp = head;
     while(temp->next->data != val){
         temp = temp->next;
@@ -95,8 +115,10 @@ int main(){
     display(head);
     insertAtHead(head,9);
     display(head);
-    cout<<search(head,4);
+    cout<<search(head,4)<<endl;
     deletion(head, 3);
+    display(head);
+    deleteAtHead(head);
     display(head);
     return 0;
 }
