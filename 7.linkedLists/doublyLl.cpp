@@ -15,7 +15,8 @@ class node{
 };
 
 void insertAtTail(node* &head, int val){
-    node* 
+    node* temp = head; 
+    
 }
 
 void display(node* head){
