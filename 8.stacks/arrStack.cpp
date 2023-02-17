@@ -14,5 +14,6 @@ int main(){
     pop();
     top();
     empty();
+    
     return 0;
 }
